@@ -6,8 +6,14 @@
       </label>
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li><a href="{{route("register")}}">Register</a></li>
-        <li><a>Login</a></li>
-        <li><a>About</a></li>
+        <li><a href="{{route("login")}}">Login</a></li>
+        <li><a href="{{route("create.post")}}">Create Post</a></li>
+        @auth
+        <li><a href="" onclick="event.preventDefault(); document.querySelector('#form-logout').submit()" >Logout</a></li>  
+        <form id="form-logout" class="hidden" action="{{route("logout")}}" method="POST">
+        @csrf
+        </form> 
+        @endauth
       </ul>
     </div>
   </div>

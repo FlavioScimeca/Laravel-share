@@ -9,6 +9,7 @@
         'resources/css/app.css',
         'resources/js/app.js',
     ])
+    @livewireStyles
 </head>
 <body>
     <x-navbar/>
@@ -16,9 +17,8 @@
     <main class=" h-screen"> 
         {{$slot}} 
     </main> 
-
     
-
     <x-footer/>
+    @livewireScripts
 </body>
 </html>

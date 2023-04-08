@@ -15,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('welcome');
 });
-
-// Route::get("/login", [AuthController::class, "login_view"])->name("login-view");
-// Route::get("/register", [AuthController::class, "register_view"])->name("register-view");
+Route::get('/create-post', function () {
+    return view('livewire.create-post');
+})->name("create.post");
 
 
 
