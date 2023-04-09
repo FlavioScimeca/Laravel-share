@@ -6,7 +6,6 @@ use App\Models\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\View as FacadesView;
 
 class PostController extends Controller
 {
@@ -39,9 +38,12 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(Request $request) : View
     {
-        //
+        $post_id = ($request["post_id"]);
+        $post = Post::where("id", $post_id)->get();
+        // @dd($post);
+        return view("post.show", ["posts" => $post]);
     }
 
     /**
@@ -63,8 +65,11 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function delete(Request $request)
     {
-        //
+        $post_id = $request["post_id"];
+        $post = Post::where("id" , $post_id);
+        $post->delete();
+        return redirect()->route("welcome");
     }
 }
