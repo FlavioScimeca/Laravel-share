@@ -2,3 +2,5 @@
 
 -   Installare TailwindCSS  
     [Guida all'installazione per Laravel](https://tailwindcss.com/docs/guides/laravel)
+
+### Guida installazione Fortify

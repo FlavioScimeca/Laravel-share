@@ -5,20 +5,22 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
       </label>
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li><a href="{{route("register")}}">Register</a></li>
-        <li><a href="{{route("login")}}">Login</a></li>
-        <li><a href="{{route("create.post")}}">Create Post</a></li>
         @auth
+        <li><a href="{{route("index.post")}}">Vedi i tuoi Post</a></li>
+        <li><a href="{{route("create.post")}}">Create Post</a></li>
         <li><a href="" onclick="event.preventDefault(); document.querySelector('#form-logout').submit()" >Logout</a></li>  
         <form id="form-logout" class="hidden" action="{{route("logout")}}" method="POST">
-        @csrf
+          @csrf
         </form> 
+        @else
+        <li><a href="{{route("register")}}">Register</a></li>
+        <li><a href="{{route("login")}}">Login</a></li>     
         @endauth
       </ul>
     </div>
   </div>
   <div class="navbar-center">
-    <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+    <a href="/" class="btn btn-ghost normal-case text-xl">Homepage</a>
   </div>
   <div class="navbar-end">
     <button class="btn btn-ghost btn-circle">

@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId(User::class, "user_id");
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->string("title", 20);
             $table->string("img");
             $table->decimal("price");

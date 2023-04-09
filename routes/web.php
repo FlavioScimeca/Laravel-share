@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/create-post', function () {
-    return view('livewire.create-post');
-})->name("create.post");
+Route::get('/create-post', [PostController::class, "create"])->name("create.post");
+Route::get('/index-post', [PostController::class, "index"])->name("index.post");
 
 
 
