@@ -57,9 +57,12 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request)
     {
-        //
+        $post_id = $request["post_id"];
+        $post = Post::where("id", $post_id)->get();
+        
+        return view("post.update", ["post" => $post[0] ]);
     }
 
     /**

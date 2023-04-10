@@ -40,6 +40,7 @@
     </div>
     <div class="p-6 pt-3">
         <button class="btn btn-warning"><a href="{{route("delete.post", ["post_id" => $post->id])}}">Elimina</a></button>
+        <button class="btn btn-warning"><a href="{{route("update.post", ["post_id" => $post->id])}}">Modifica</a></button>
     </div>
   </div>
 @endforeach
