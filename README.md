@@ -3,7 +3,7 @@
 -   Installare TailwindCSS  
     [Guida all'installazione per Laravel](https://tailwindcss.com/docs/guides/laravel)
 
-### [Guida installazione Fortify](https://laravel.com/docs/10.x/fortify#:~:text=Laravel%20Fortify%20is%20a%20frontend,%2C%20email%20verification%2C%20and%20more.)
+# [Guida installazione Fortify](https://laravel.com/docs/10.x/fortify#:~:text=Laravel%20Fortify%20is%20a%20frontend,%2C%20email%20verification%2C%20and%20more.)
 
 1.  `PHP composer require laravel/fortify`
 2.  `php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"`
@@ -48,3 +48,36 @@
     ```
 
 11. Per cambiare la logica di Fortify andare in **_app/Action/Fortify_**
+
+<h2 style="text-align:center; margin-top:3rem; color:yellow">Cosa ho scoperto?</h2>
+
+> Nelle migration per la foreignId
+
+```PHP
+ $table->foreignId('user_id')->references('id')->on('users');
+```
+
+> Come passare dei dati a dei componenti LiveWire
+
+```PHP
+<livewire:show-post :post="$post">
+@livewire('show-post', ['post' => $post])
+```
+
+Nel mount() method dobbiamo **_intercettare_** il parametro $post
+
+NB: **MOUNT** viene chiamato solo al 1 Render del componente anche quando è <span style="color:red; font-weight:bold">refreshed</span> or <span style="color:red; font-weight:bold">rerendered</span>.
+
+```PHP
+class ShowPost extends Component
+{
+    public $title;
+
+    public function mount($post)
+    {
+        $this->title = $post->title;
+    }
+}
+```
+
+> Scrivere un README piu leggibile
